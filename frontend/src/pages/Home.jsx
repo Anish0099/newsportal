@@ -13,6 +13,7 @@ const Home = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       const res = await fetch(`${import.meta.env.VITE_REACT_API_URL}/api/post/getPosts?limit=6`)
+      console.log("called")
 
       const data = await res.json()
 

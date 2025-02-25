@@ -13,7 +13,7 @@ const CommentSection = ({ postId }) => {
   const { currentUser } = useSelector((state) => state.user)
   const [comment, setComment] = useState("")
   const [allComments, setAllComments] = useState([])
-
+  const url = "https://newsportal-zz5t.onrender.com"
   // console.log(allComments)
 
   const handleSubmit = async (e) => {
@@ -28,7 +28,8 @@ const CommentSection = ({ postId }) => {
     }
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_REACT_API_URL}/api/comment/create`, {
+      console.log(url)
+      const res = await fetch(`/api/comment/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -88,10 +89,10 @@ const CommentSection = ({ postId }) => {
           allComments.map((comment) =>
             comment._id === commentId
               ? {
-                  ...comment,
-                  likes: data.likes,
-                  numberOfLikes: data.likes.length,
-                }
+                ...comment,
+                likes: data.likes,
+                numberOfLikes: data.likes.length,
+              }
               : comment
           )
         )

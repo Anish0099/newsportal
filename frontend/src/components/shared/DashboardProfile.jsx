@@ -26,6 +26,7 @@ import {
 } from "../ui/alert-dialog"
 
 const DashboardProfile = () => {
+  const url = import.meta.env.VITE_REACT_API_URL
   
   const { currentUser, error, loading } = useSelector((state) => state.user)
 
@@ -128,7 +129,7 @@ const DashboardProfile = () => {
 
   const handleSignout = async () => {
     try {
-      const res = await fetch(`/api/user/signout`, {
+      const res = await fetch(`${url}/api/user/signout`, {
         method: "POST",
       })
       const data = await res.json()

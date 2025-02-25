@@ -29,6 +29,7 @@ const formSchema = z.object({
 })
 
 const SignUpForm = () => {
+  const url = "https://newsportal-zz5t.onrender.com"
   const { toast } = useToast()
   const navigate = useNavigate()
 
@@ -51,7 +52,7 @@ const SignUpForm = () => {
       setLoading(true)
       setErrorMessage(null)
 
-      const res = await fetch("/api/auth/signup", {
+      const res = await fetch(url + "/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),

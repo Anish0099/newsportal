@@ -13,6 +13,7 @@ export async function uploadFile(file) {
     return uploadedFile
   } catch (error) {
     console.log(error)
+    console.log(import.meta.env.VITE_APPWRITE_PROJECT_ID)
   }
 }
 
@@ -27,11 +28,13 @@ export function getFilePreview(fileId) {
       ImageGravity.Top,
       100
     )
+    console.log(import.meta.env.VITE_APPWRITE_PROJECT_ID)
 
     if (!fileUrl) throw Error
 
     return fileUrl
   } catch (error) {
     console.log(error)
+    console.log(import.meta.env.VITE_APPWRITE_PROJECT_ID)
   }
 }
