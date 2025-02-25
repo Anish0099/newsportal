@@ -23,9 +23,14 @@ const app = express()
 
 
 app.use(cors({
-  origin: ['*'],
-  credentials: true
+  origin: (origin, callback) => {
+    callback(null, true); // ✅ Allows all origins
+  },
+  credentials: true, // ✅ Allows cookies & authentication headers
+  methods: ["GET", "POST", "PUT", "DELETE"], // ✅ Allow standard HTTP methods
+  allowedHeaders: ["Content-Type", "Authorization"], // ✅ Allow these headers in requests
 }));
+
 
 // for allowing json object in req body
 app.use(express.json())
