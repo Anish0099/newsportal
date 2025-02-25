@@ -25,9 +25,10 @@ const app = express()
 app.use(express.json())
 app.use(cookieParser())
 
-app.listen(5000, () => {
-  console.log("Server is running on port 5000!")
-})
+const PORT = process.env.PORT || 5000; // ✅ Uses Render's dynamic port
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}!`);
+});
 
 app.use("/api/auth", authRoutes)
 app.use("/api/user", userRoutes)
