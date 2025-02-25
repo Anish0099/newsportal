@@ -34,6 +34,15 @@ app.use("/api/user", userRoutes)
 app.use("/api/post", postRoutes)
 app.use("/api/comment", commentRoutes)
 
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval';"
+  );
+  next();
+});
+
+
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500
 

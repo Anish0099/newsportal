@@ -23,7 +23,7 @@ const PostDetails = () => {
       try {
         setLoading(true)
 
-        const res = await fetch(`/api/post/getposts?slug=${postSlug}`)
+        const res = await fetch(`${import.meta.env.VITE_REACT_API_URL}/api/post/getposts?slug=${postSlug}`)
 
         const data = await res.json()
 

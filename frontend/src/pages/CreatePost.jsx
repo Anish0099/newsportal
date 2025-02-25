@@ -64,13 +64,14 @@ const CreatePost = () => {
     e.preventDefault()
 
     try {
-      const res = await fetch("/api/post/create", {
+      const res = await fetch(`/api/post/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       })
 
       const data = await res.json()
+      console.log(data)
 
       if (!res.ok) {
         toast({ title: "Something went wrong! Please try again." })

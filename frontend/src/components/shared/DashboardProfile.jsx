@@ -26,6 +26,7 @@ import {
 } from "../ui/alert-dialog"
 
 const DashboardProfile = () => {
+  
   const { currentUser, error, loading } = useSelector((state) => state.user)
 
   const profilePicRef = useRef()
@@ -80,7 +81,7 @@ const DashboardProfile = () => {
         profilePicture,
       }
 
-      const res = await fetch(`/api/user/update/${currentUser._id}`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_API_URL}/api/user/update/${currentUser._id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -108,7 +109,7 @@ const DashboardProfile = () => {
     try {
       dispatch(deleteUserStart())
 
-      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_API_URL}/api/user/delete/${currentUser._id}`, {
         method: "DELETE",
       })
 
@@ -127,19 +128,21 @@ const DashboardProfile = () => {
 
   const handleSignout = async () => {
     try {
-      const res = await fetch("/api/user/signout", {
+      const res = await fetch(`/api/user/signout`, {
         method: "POST",
       })
-
       const data = await res.json()
 
       if (!res.ok) {
         console.log(data.message)
+        console.log(`${import.meta.env.VITE_REACT_API_URL}/api/user/signout`);
       } else {
         dispatch(signOutSuccess())
+        console.log(`${import.meta.env.VITE_REACT_API_URL}/api/user/signout`);
       }
     } catch (error) {
       console.log(error)
+      console.log(`${import.meta.env.VITE_REACT_API_URL}/api/user/signout`);
     }
   }
 
