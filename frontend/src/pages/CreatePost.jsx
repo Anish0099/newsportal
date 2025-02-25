@@ -64,7 +64,7 @@ const CreatePost = () => {
     e.preventDefault()
 
     try {
-      const res = await fetch(`/api/post/create`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_API_URL}/api/post/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),

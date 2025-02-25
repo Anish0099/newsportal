@@ -97,7 +97,7 @@ const EditPost = () => {
 
     try {
       const res = await fetch(
-        `/api/post/updatepost/${postId}/${currentUser._id}`,
+        `${import.meta.env.VITE_REACT_API_URL}/api/post/updatepost/${postId}/${currentUser._id}`,
         {
           method: "PUT",
           headers: { "Content-Type": "application/json" },

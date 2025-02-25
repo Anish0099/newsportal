@@ -29,7 +29,7 @@ const CommentSection = ({ postId }) => {
 
     try {
       console.log(url)
-      const res = await fetch(`/api/comment/create`, {
+      const res = await fetch(`${import.meta.env.VITE_REACT_API_URL}/api/comment/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

@@ -29,7 +29,7 @@ const Comment = ({ comment, onLike, onEdit, onDelete }) => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await fetch(`https://newsportal-zz5t.onrender.com/api/user/${comment.userId}`)
+        const res = await fetch(`${import.meta.env.VITE_REACT_API_URL}/api/user/${comment.userId}`)
 
         const data = await res.json()
 
