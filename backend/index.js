@@ -23,7 +23,7 @@ const app = express()
 
 app.use(
   cors({
-    origin: "http://localhost:5173", // Update with your frontend URL
+    origin: "http://localhost:5173" || "https://aankhodekhidigital.vercel.app/", // Update with your frontend URL
     credentials: true,
   })
 );
