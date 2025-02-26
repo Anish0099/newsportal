@@ -37,6 +37,7 @@ const DashboardUsers = () => {
     const fetchUsers = async () => {
       try {
         const res = await fetch(`${import.meta.env.VITE_REACT_API_URL}/api/user/getusers`)
+        console.log(currentUser._id)
 
         const data = await res.json()
 

@@ -13,6 +13,7 @@ import {
   TableHeader,
   TableRow,
 } from "../ui/table"
+import Cookies from "js-cookie"
 
 const MainDashboard = () => {
   const [users, setUsers] = useState([])
@@ -35,19 +36,24 @@ const MainDashboard = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch(`${import.meta.env.VITE_REACT_API_URL}/api/user/getusers?limit=5`)
-
-        const data = await res.json()
-
-        if (res.ok) {
-          setUsers(data.users)
-          setTotalUsers(data.totalUsers)
-          setLastMonthUsers(data.lastMonthUsers)
+        const token = Cookies.get('access_token'); // Use js-cookie to get the token
+        console.log(token)
+        const res = await fetch(`${import.meta.env.VITE_REACT_API_URL}/api/user/getusers?limit=5`, {
+          credentials:"include",
+        });
+    
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
         }
+    
+        const data = await res.json();
+        setUsers(data.users);
+        setTotalUsers(data.totalUsers);
+        setLastMonthUsers(data.lastMonthUsers);
       } catch (error) {
-        console.log(error.message)
+        console.error("Error fetching users:", error.message);
       }
-    }
+    };
 
     const fetchPosts = async () => {
       try {

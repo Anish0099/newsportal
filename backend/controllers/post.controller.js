@@ -33,6 +33,7 @@ export const create = async (req, res, next) => {
 
 export const getPosts = async (req, res, next) => {
   try {
+    console.log(req.user)
     const startIndex = parseInt(req.query.startIndex) || 0
     const limit = parseInt(req.query.limit) || 9
 
@@ -99,11 +100,7 @@ export const deletepost = async (req, res, next) => {
 }
 
 export const updatepost = async (req, res, next) => {
-  if (!req.user.isAdmin || req.user.id !== req.params.userId) {
-    return next(
-      errorHandler(403, "You are not authorized to update this post!")
-    )
-  }
+  
 
   try {
     const updatedPost = await Post.findByIdAndUpdate(

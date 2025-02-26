@@ -29,7 +29,6 @@ const formSchema = z.object({
 })
 
 const SignUpForm = () => {
-  const url = "https://newsportal-zz5t.onrender.com"
   const { toast } = useToast()
   const navigate = useNavigate()
 

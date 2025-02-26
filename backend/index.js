@@ -21,20 +21,16 @@ mongoose
 
 const app = express()
 
-
-app.use(cors({
-  origin: (origin, callback) => {
-    callback(null, true); // ✅ Allows all origins
-  },
-  credentials: true, // ✅ Allows cookies & authentication headers
-  methods: ["GET", "POST", "PUT", "DELETE"], // ✅ Allow standard HTTP methods
-  allowedHeaders: ["Content-Type", "Authorization"], // ✅ Allow these headers in requests
-}));
-
-
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Update with your frontend URL
+    credentials: true,
+  })
+);
+app.use(cookieParser())
 // for allowing json object in req body
 app.use(express.json())
-app.use(cookieParser())
+
 
 const PORT = process.env.PORT || 5000; // ✅ Uses Render's dynamic port
 app.listen(PORT, () => {
@@ -50,14 +46,6 @@ app.use("/api/auth", authRoutes)
 app.use("/api/user", userRoutes)
 app.use("/api/post", postRoutes)
 app.use("/api/comment", commentRoutes)
-
-app.use((req, res, next) => {
-  res.setHeader(
-    "Content-Security-Policy",
-    "default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval';"
-  );
-  next();
-});
 
 
 app.use((err, req, res, next) => {

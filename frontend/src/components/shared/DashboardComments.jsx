@@ -36,6 +36,7 @@ const DashboardComments = () => {
     const fetchComments = async () => {
       try {
         const res = await fetch(`${import.meta.env.VITE_REACT_API_URL}/api/comment/getcomments`)
+        
 
         const data = await res.json()
 

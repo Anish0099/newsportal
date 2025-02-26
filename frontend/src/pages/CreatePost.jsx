@@ -67,6 +67,7 @@ const CreatePost = () => {
       const res = await fetch(`${import.meta.env.VITE_REACT_API_URL}/api/post/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        'Access-Control-Allow-Origin': '*',
         body: JSON.stringify(formData),
       })
 

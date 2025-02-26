@@ -49,6 +49,13 @@ const BottomNavBar = () => {
       )}
 
       {currentUser && currentUser.isAdmin && (
+        <Link to={"/dashboard?tab=dashboard"} className="flex flex-col items-center text-slate-800">
+          <FaHome size={20} />
+          <span className="text-xs">Dashboard</span>
+        </Link>
+      )}
+
+      {currentUser && currentUser.isAdmin && (
         <Link
           to="/dashboard?tab=posts"
           className="flex flex-col items-center text-slate-800"
